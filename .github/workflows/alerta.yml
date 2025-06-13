@@ -1,0 +1,20 @@
+name: Notificación Hola Mundo
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  hola-mundo:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Clonar repositorio
+        uses: actions/checkout@v3
+
+      - name: Ejecutar script Hola Mundo
+        run: node index.js
+
+      - name: Enviar notificación a ntfy.sh
+        run: |
+          curl -d "¡Push recibido en main!" ntfy.sh/devops-itla
